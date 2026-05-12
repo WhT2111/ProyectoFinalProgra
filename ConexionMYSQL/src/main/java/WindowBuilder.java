@@ -80,8 +80,7 @@ public class WindowBuilder extends JFrame {
 		modeloTabla = new DefaultTableModel(new Object[]{"Nombre", "Género", "Especie", "Recurso", "Región", "Posición", "Rango", "Año"}, 0);
 		table = new JTable(modeloTabla);
 		contentPane.add(new JScrollPane(table), BorderLayout.CENTER);
-		// --- LÓGICA DE SELECCIÓN EN TABLA ---
-
+		//Seleccionar en tabla (Fill de datos según la selección)
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
