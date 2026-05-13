@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class POJO implements Serializable {
+public class Campeon implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String nombre; 
 	private String genero;
@@ -10,9 +10,27 @@ public class POJO implements Serializable {
 	private String posicion; 
 	private String tipoDeRango;
 	private int añoDeSalida;
-	public POJO() {
-    }
-	
+	private double winrate;
+	private String rutaImagen;
+
+
+	public Campeon() {
+	}
+	public String getRutaImagen() { 
+		return null; 
+	}
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen; 
+	}
+	public double getWinrate() {
+		return winrate;
+	}
+
+	public void setWinrate(double winrate) {
+		this.winrate = winrate;
+	}
+
+
 	public String getNombre() {
 		return nombre;
 	}
