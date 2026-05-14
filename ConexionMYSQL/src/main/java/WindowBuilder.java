@@ -14,6 +14,7 @@ public class WindowBuilder extends JFrame {
 	private JTable table;
 	private DefaultTableModel modeloTabla;
 	private JLabel lblFoto;
+	public ImageIcon iconoOriginal;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
@@ -55,7 +56,7 @@ public class WindowBuilder extends JFrame {
 		txtRegion = new JTextField(); panelFormulario.add(txtRegion);
 
 		panelFormulario.add(new JLabel("Posición:"));
-		String[] opcionesPosicion = { "Top", "Jungle", "Mid", "ADC", "Sup" };
+		String[] opcionesPosicion = { "", "Top", "Jungle", "Mid", "ADC", "Sup" };
 		txtPosicion = new JComboBox<>(opcionesPosicion);
 		panelFormulario.add(txtPosicion);
 
@@ -154,13 +155,14 @@ public class WindowBuilder extends JFrame {
 		btnBuscar.addActionListener(e -> {
 		    String añoStr = txtAño.getText().trim();
 		    String wrStr = txtWinrate.getText().trim().replace("%", ""); 
+		    String posicionSeleccionada = txtPosicion.getSelectedItem().toString();
 
 		    Integer añoInt = (añoStr.isEmpty()) ? 0 : Integer.parseInt(añoStr);
 		    Double wrDouble = (wrStr.isEmpty()) ? 0.0 : Double.parseDouble(wrStr);
 
 		    List<Campeon> resultados = FuncionesSelects.buscar(
 		            txtNombre.getText(), txtGenero.getText(), txtEspecie.getText(), 
-		            txtRecurso.getText(), txtRegion.getText(), txtPosicion.toString(), 
+		            txtRecurso.getText(), txtRegion.getText(), posicionSeleccionada, 
 		            txtRango.getText(), añoInt, wrDouble
 		            );
 		    actualizarTabla(resultados);
@@ -182,6 +184,7 @@ public class WindowBuilder extends JFrame {
 		
 		// Botón Limpiar
 		btnLimpiar.addActionListener(e -> {
+			String imgVacia = "img/Vacia.png";
 		    txtNombre.setText("");
 		    txtGenero.setText("");
 		    txtEspecie.setText("");
@@ -191,6 +194,9 @@ public class WindowBuilder extends JFrame {
 		    txtRango.setText("");
 		    txtAño.setText("");
 		    txtWinrate.setText("");
+		    cargarImagen(imgVacia);
+		    
+		    
 		});
 		
 
@@ -233,7 +239,7 @@ public class WindowBuilder extends JFrame {
 	}
 	private void cargarImagen(String nombreImagen) {
 	    try { 
-	        ImageIcon iconoOriginal = new ImageIcon("img/" + nombreImagen + ".png");
+	    	iconoOriginal = new ImageIcon("img/" + nombreImagen + ".png");
 	        Image imgEscalada = iconoOriginal.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
 	        lblFoto.setIcon(new ImageIcon(imgEscalada));
 	    } catch (Exception e) {

@@ -4,7 +4,7 @@ import java.util.List;
 public class FuncionesSelects {
 	static final  String url = "jdbc:mysql://localhost:3306/proyecto";
 	static final  String user = "root";
-	static final  String password = "root";
+	static final  String password = "Flickflick1!";
 	
 	//Create
 	public static void guardarPersonaje(Campeon personaje) {
