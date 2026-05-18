@@ -184,7 +184,7 @@ public class WindowBuilder extends JFrame {
 		
 		// Botón Limpiar
 		btnLimpiar.addActionListener(e -> {
-			String imgVacia = "img/Vacia.png";
+			String imgVacia = "Vacio";
 		    txtNombre.setText("");
 		    txtGenero.setText("");
 		    txtEspecie.setText("");
@@ -209,6 +209,7 @@ public class WindowBuilder extends JFrame {
 
 		// Carga de datos (al abrir aplicación)
 		actualizarTabla(FuncionesSelects.obtenerTodos());
+		cargarImagen("Vacio");
 	}
 
 	// Refrescar 
